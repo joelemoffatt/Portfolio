@@ -104,12 +104,22 @@ section {
 	--color-accent-dim: rgba(147, 197, 253, 0.12);
 }
 
-.section-wave {
-	display: block;
+.wave-wrapper {
 	position: absolute;
 	top: -160px;
 	left: 0;
-	width: 100%;
+	right: 0;
+	height: 160px;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.section-wave {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 4000px;
 	height: 160px;
 	pointer-events: none;
 }
