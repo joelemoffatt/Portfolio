@@ -36,10 +36,7 @@ html {
 /* ─── Base ────────────────────────────────────────────────── */
 body {
 	font-family: var(--font-body);
-	background-color: var(--color-bg);
-	/* Precision dot grid */
-	background-image: radial-gradient(circle, rgba(120, 145, 170, 0.45) 1.5px, transparent 1.5px);
-	background-size: 28px 28px;
+	background-color: var(--color-accent);
 	color: var(--color-text);
 	margin: 0;
 	padding: 0;
@@ -88,6 +85,20 @@ a:hover {
 
 section {
 	padding: var(--section-padding);
+}
+
+/* ─── Dark (blue) section overrides ──────────────────────── */
+.content-dark {
+	--color-text: #ffffff;
+	--color-text-muted: rgba(255, 255, 255, 0.72);
+	--color-text-subtle: rgba(255, 255, 255, 0.45);
+	--color-border: rgba(255, 255, 255, 0.14);
+	--color-border-strong: rgba(255, 255, 255, 0.3);
+	--color-surface: rgba(255, 255, 255, 0.07);
+	--color-surface-alt: rgba(255, 255, 255, 0.04);
+	--color-accent: #93c5fd;
+	--color-accent-hover: #bfdbfe;
+	--color-accent-dim: rgba(147, 197, 253, 0.12);
 }
 
 /* ─── Section Label (shared) ──────────────────────────────── */
