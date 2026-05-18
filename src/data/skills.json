@@ -1,0 +1,14 @@
+[
+  {
+    "group": "Languages",
+    "items": ["JavaScript", "TypeScript", "Python", "HTML", "CSS"]
+  },
+  {
+    "group": "Frameworks & Libraries",
+    "items": ["React", "Astro", "Node.js", "Express"]
+  },
+  {
+    "group": "Tools & Platforms",
+    "items": ["Git", "Docker", "PostgreSQL", "VS Code", "GitHub Actions"]
+  }
+]

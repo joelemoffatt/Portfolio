@@ -1,0 +1,94 @@
+---
+import profile from '../data/profile.json';
+---
+
+<section id="contact">
+	<div class="container">
+		<span class="section-label">// let's talk</span>
+		<h2>Get in touch</h2>
+		<p class="subtitle">
+			Open to new opportunities and interesting projects.<br />
+			Drop me a line — I'll respond within a day.
+		</p>
+		<a href={`mailto:${profile.email}`} class="email-link">
+			{profile.email}
+			<svg viewBox="0 0 16 16" aria-hidden="true" width="14" height="14">
+				<path fill="currentColor" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+				<path fill="currentColor" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+			</svg>
+		</a>
+		<div class="socials">
+			{profile.socials.map((social) => (
+				<a href={social.url} target="_blank" rel="noopener noreferrer">
+					{social.label}
+					<svg viewBox="0 0 16 16" aria-hidden="true" width="11" height="11">
+						<path fill="currentColor" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+						<path fill="currentColor" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+					</svg>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	h2 {
+		margin-bottom: 0.75rem;
+	}
+
+	.subtitle {
+		color: var(--color-text-muted);
+		max-width: 420px;
+		margin-bottom: 2rem;
+		font-size: 1.0rem;
+		line-height: 1.75;
+	}
+
+	.email-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+		color: var(--color-text);
+		text-decoration: none;
+		margin-bottom: 2rem;
+		padding-bottom: 0.25rem;
+		border-bottom: 1.5px solid var(--color-border);
+		transition: color 0.15s ease, border-color 0.15s ease;
+	}
+
+	.email-link:hover {
+		color: var(--color-accent);
+		border-bottom-color: var(--color-accent);
+		text-decoration: none;
+	}
+
+	.socials {
+		display: flex;
+		gap: 0.25rem;
+		flex-wrap: wrap;
+	}
+
+	.socials a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--color-text-subtle);
+		text-decoration: none;
+		padding: 0.4rem 0.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-surface);
+		transition: color 0.15s ease, border-color 0.15s ease;
+	}
+
+	.socials a:hover {
+		color: var(--color-accent);
+		border-color: var(--color-accent);
+		text-decoration: none;
+	}
+</style>

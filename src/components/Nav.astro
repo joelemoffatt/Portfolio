@@ -1,0 +1,80 @@
+---
+import { SITE_TITLE } from '../consts';
+---
+
+<header>
+	<nav class="container">
+		<a href="/" class="brand">{SITE_TITLE}</a>
+		<ul>
+			<li><a href="#projects">Projects</a></li>
+			<li><a href="#skills">Skills</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
+</header>
+
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(237, 242, 247, 0.88);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 3.25rem;
+	}
+
+	.brand {
+		font-family: var(--font-display);
+		font-weight: 400;
+		font-size: 1.1rem;
+		color: var(--color-text);
+		text-decoration: none;
+		letter-spacing: -0.01em;
+	}
+
+	.brand:hover {
+		text-decoration: none;
+		color: var(--color-accent);
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	ul a {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--color-text-muted);
+		text-decoration: none;
+		padding: 0.35rem 0.75rem;
+		border-radius: var(--radius);
+		transition: color 0.15s ease, background 0.15s ease;
+	}
+
+	ul a:hover {
+		color: var(--color-accent);
+		background: var(--color-accent-dim);
+		text-decoration: none;
+	}
+
+	@media (max-width: 480px) {
+		ul {
+			gap: 0;
+		}
+		ul a {
+			padding: 0.35rem 0.5rem;
+		}
+	}
+</style>
