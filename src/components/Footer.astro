@@ -10,6 +10,7 @@ const year = new Date().getFullYear();
 			<span class="mono">&copy; {year}</span> {profile.name}
 		</span>
 		<div class="links">
+			<a href={`mailto:${profile.email}`}>{profile.email}</a>
 			{profile.socials.map((social) => (
 				<a href={social.url} target="_blank" rel="noopener noreferrer">{social.label}</a>
 			))}

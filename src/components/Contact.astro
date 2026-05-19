@@ -6,6 +6,7 @@ import profile from '../data/profile.json';
 	<div class="container">
 		<span class="section-label">// let's talk</span>
 		<h2>Get in touch</h2>
+		<div class="card">
 		<p class="subtitle">
 			Open to new opportunities and interesting projects.<br />
 			Drop me a line — I'll respond within a day.
@@ -28,16 +29,26 @@ import profile from '../data/profile.json';
 				</a>
 			))}
 		</div>
+		</div>
 	</div>
 </section>
 
 <style>
 	h2 {
-		margin-bottom: 0.75rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.card {
+		background: #D2E5EF;
+		border-radius: var(--radius);
+		padding: 2rem;
+		display: inline-flex;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	.subtitle {
-		color: var(--color-text-muted);
+		color: #475569;
 		max-width: 420px;
 		margin-bottom: 2rem;
 		font-size: 1.0rem;
@@ -51,17 +62,17 @@ import profile from '../data/profile.json';
 		font-family: var(--font-display);
 		font-style: italic;
 		font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-		color: var(--color-text);
+		color: #0E172A;
 		text-decoration: none;
 		margin-bottom: 2rem;
 		padding-bottom: 0.25rem;
-		border-bottom: 1.5px solid var(--color-border);
+		border-bottom: 1.5px solid rgba(0, 102, 204, 0.3);
 		transition: color 0.15s ease, border-color 0.15s ease;
 	}
 
 	.email-link:hover {
-		color: var(--color-accent);
-		border-bottom-color: var(--color-accent);
+		color: #0066CC;
+		border-bottom-color: #0066CC;
 		text-decoration: none;
 	}
 
@@ -77,18 +88,19 @@ import profile from '../data/profile.json';
 		gap: 0.35rem;
 		font-family: var(--font-mono);
 		font-size: 0.75rem;
-		color: var(--color-text-subtle);
+		color: #475569;
 		text-decoration: none;
 		padding: 0.4rem 0.75rem;
-		border: 1px solid var(--color-border);
+		border: 1px solid rgba(0, 102, 204, 0.2);
 		border-radius: var(--radius);
-		background: var(--color-surface);
-		transition: color 0.15s ease, border-color 0.15s ease;
+		background: #dceef8;
+		transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 	}
 
 	.socials a:hover {
-		color: var(--color-accent);
-		border-color: var(--color-accent);
+		color: #0066CC;
+		border-color: #0066CC;
+		background: rgba(0, 102, 204, 0.1);
 		text-decoration: none;
 	}
 </style>

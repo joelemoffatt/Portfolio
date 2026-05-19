@@ -6,19 +6,13 @@ import skills from '../data/skills.json';
 	<div class="container">
 		<span class="section-label">// capabilities</span>
 		<h2>Skills</h2>
-		<div class="groups">
+		<div class="card">
 			{skills.map((group) => (
 				<div class="group">
-					<h3>
-						<span class="group-rule"></span>
-						{group.group}
-					</h3>
+					<h3>{group.group}</h3>
 					<ul>
 						{group.items.map((item) => (
-							<li>
-								<span class="tick">—</span>
-								{item}
-							</li>
+							<li>{item}</li>
 						))}
 					</ul>
 				</div>
@@ -30,37 +24,38 @@ import skills from '../data/skills.json';
 <style>
 	section {
 		border-bottom: 1px solid var(--color-border);
+		padding-top: 3rem;
+		padding-bottom: 3rem;
 	}
 
 	h2 {
-		margin-bottom: 2.5rem;
+		margin-bottom: 1.5rem;
+		color: #D2E5EF
 	}
 
-	.groups {
+	.card {
+		background: #D2E5EF;
+		border-radius: var(--radius);
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		gap: 2.5rem 3rem;
+		grid-template-columns: repeat(3, 1fr);
+		width: 100%;
+		overflow: hidden;
 	}
 
-	.group h3 {
-		font-family: var(--font-mono);
-		font-size: 0.7rem;
-		font-weight: 500;
+	@media (max-width: 600px) {
+		.card { grid-template-columns: 1fr; }
+	}
+
+	.group { padding: 1.75rem; }
+
+	h3 {
+		font-size: 0.8rem;
+		font-weight: 700;
+		font-family: var(--font-display);
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--color-text-subtle);
+		letter-spacing: 0.08em;
+		color: #0E172A;
 		margin-bottom: 1rem;
-		display: flex;
-		align-items: center;
-		gap: 0.6rem;
-	}
-
-	.group-rule {
-		display: block;
-		width: 18px;
-		height: 1px;
-		background: var(--color-accent);
-		flex-shrink: 0;
 	}
 
 	ul {
@@ -69,22 +64,23 @@ import skills from '../data/skills.json';
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
 	}
 
 	li {
-		display: flex;
-		align-items: baseline;
-		gap: 0.6rem;
 		font-size: 0.9375rem;
-		color: var(--color-text);
+		color: #475569;
+		padding: 0.3rem 0 0.3rem 1rem;
+		position: relative;
 	}
 
-	.tick {
-		font-family: var(--font-mono);
-		font-size: 0.7rem;
-		color: var(--color-accent);
-		flex-shrink: 0;
-		line-height: 1.7;
+	li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 5px;
+		height: 5px;
+		background: #0066CC;
 	}
 </style>

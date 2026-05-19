@@ -1,14 +1,24 @@
 ---
 import { SITE_TITLE } from '../consts';
+import logo from '../assets/logo.svg';
 ---
 
 <header>
 	<nav class="container">
-		<a href="/" class="brand">{SITE_TITLE}</a>
+		<a href="/" class="brand">
+			<img src={logo.src} alt="" aria-hidden="true" class="logo" width="32" height="32" />
+			{SITE_TITLE}
+		</a>
 		<ul>
 			<li><a href="#projects">Projects</a></li>
 			<li><a href="#skills">Skills</a></li>
-			<li><a href="#contact">Contact</a></li>
+			<li>
+				<button class="theme-toggle" aria-label="Toggle header theme" title="Switch header colour">
+					<span class="toggle-track">
+						<span class="toggle-thumb"></span>
+					</span>
+				</button>
+			</li>
 		</ul>
 	</nav>
 </header>
@@ -18,10 +28,14 @@ import { SITE_TITLE } from '../consts';
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		background: rgba(210, 229, 239, 0.92);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-bottom: 1px solid rgba(180, 210, 228, 0.6);
+		background: #D2E5EF;
+		border-bottom: 1px solid rgba(0, 102, 204, 0.15);
+		transition: background 0.3s ease, border-color 0.3s ease;
+	}
+
+	header.dark {
+		background: #0E172A;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 	}
 
 	nav {
@@ -32,60 +46,113 @@ import { SITE_TITLE } from '../consts';
 	}
 
 	.brand {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 		font-family: var(--font-display);
 		font-weight: 400;
 		font-size: 1.1rem;
-		color: var(--color-text);
+		color: #0E172A;
 		text-decoration: none;
 		letter-spacing: -0.01em;
+		transition: color 0.3s ease;
 	}
 
-	.brand:hover {
-		text-decoration: none;
-		color: var(--color-accent);
+	header.dark .brand {
+		color: #D2E5EF;
 	}
+
+	.logo {
+		border-radius: 50%;
+		display: block;
+		flex-shrink: 0;
+	}
+
+	.brand:hover { text-decoration: none; color: #0066CC; }
+	header.dark .brand:hover { color: #D2E5EF; }
 
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		display: flex;
+		align-items: center;
 		gap: 0.25rem;
 	}
 
 	ul a {
 		font-family: var(--font-mono);
 		font-size: 0.75rem;
-		color: var(--color-text-muted);
+		color: #475569;
 		text-decoration: none;
 		padding: 0.35rem 0.75rem;
 		border-radius: var(--radius);
 		transition: color 0.15s ease, background 0.15s ease;
 	}
 
-	ul a:hover {
-		color: var(--color-accent);
-		background: var(--color-accent-dim);
-		text-decoration: none;
+	header.dark ul a { color: rgba(210, 229, 239, 0.72); }
+
+	ul a:hover { color: #0066CC; background: rgba(0, 102, 204, 0.08); text-decoration: none; }
+	header.dark ul a:hover { color: #D2E5EF; background: rgba(210, 229, 239, 0.1); }
+
+	/* Toggle */
+	.theme-toggle {
+		background: none;
+		border: none;
+		padding: 0.35rem 0.5rem;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+
+	.toggle-track {
+		display: block;
+		width: 28px;
+		height: 15px;
+		border-radius: 999px;
+		background: rgba(0, 102, 204, 0.25);
+		position: relative;
+		transition: background 0.3s ease;
+	}
+
+	header.dark .toggle-track { background: rgba(210, 229, 239, 0.3); }
+
+	.toggle-thumb {
+		display: block;
+		width: 11px;
+		height: 11px;
+		border-radius: 50%;
+		background: #0066CC;
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		transition: transform 0.3s ease, background 0.3s ease;
+	}
+
+	header.dark .toggle-thumb {
+		transform: translateX(13px);
+		background: #D2E5EF;
 	}
 
 	@media (max-width: 480px) {
-		ul {
-			gap: 0;
-		}
-		ul a {
-			padding: 0.35rem 0.5rem;
-		}
+		ul { gap: 0; }
+		ul a { padding: 0.35rem 0.5rem; }
 	}
 </style>
 
 <script>
-	let cancelled = false;
+	const header = document.querySelector<HTMLElement>('header')!;
+	const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle')!;
 
+	toggle.addEventListener('click', () => {
+		header.classList.toggle('dark');
+	});
+
+	let cancelled = false;
 	const cancelScroll = () => { cancelled = true; };
 	window.addEventListener('wheel',     cancelScroll, { passive: true });
 	window.addEventListener('touchmove', cancelScroll, { passive: true });
-	window.addEventListener('keydown',   (e) => {
+	window.addEventListener('keydown', (e) => {
 		if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(e.key)) cancelScroll();
 	});
 
