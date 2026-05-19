@@ -55,16 +55,16 @@ const num = String(index).padStart(2, '0');
 	.card {
 		display: flex;
 		flex-direction: column;
-		background: var(--color-surface);
-		border: 1px solid var(--color-border);
+		background: #D2E5EF;
+		border: 1px solid rgba(0, 102, 204, 0);
 		border-radius: var(--radius);
 		padding: 1.5rem;
 		transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s var(--ease-out);
 	}
 
 	.card:hover {
-		border-color: var(--color-accent);
-		box-shadow: 0 8px 32px rgba(0, 102, 204, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+		border-color: #0066CC;
+		box-shadow: 0 8px 32px rgba(0, 102, 204, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
 		transform: translateY(-2px);
 	}
 
@@ -78,7 +78,7 @@ const num = String(index).padStart(2, '0');
 	.num {
 		font-family: var(--font-mono);
 		font-size: 0.7rem;
-		color: var(--color-text-subtle);
+		color: #94A3B8;
 		letter-spacing: 0.05em;
 	}
 
@@ -94,17 +94,17 @@ const num = String(index).padStart(2, '0');
 		width: 28px;
 		height: 28px;
 		border-radius: 4px;
-		color: var(--color-text-subtle);
-		background: var(--color-surface-alt);
-		border: 1px solid var(--color-border);
+		color: #475569;
+		background: #dceef8;
+		border: 1px solid rgba(0, 102, 204, 0.2);
 		transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 		text-decoration: none;
 	}
 
 	.card-links a:hover {
-		color: var(--color-accent);
-		border-color: var(--color-accent);
-		background: var(--color-accent-dim);
+		color: #0066CC;
+		border-color: #0066CC;
+		background: rgba(0, 102, 204, 0.1);
 		text-decoration: none;
 	}
 
@@ -115,11 +115,11 @@ const num = String(index).padStart(2, '0');
 	h3 {
 		font-size: 1.15rem;
 		margin-bottom: 0.5rem;
-		color: var(--color-text);
+		color: #0E172A;
 	}
 
 	p {
-		color: var(--color-text-muted);
+		color: #475569;
 		font-size: 0.9375rem;
 		margin-bottom: 0;
 		line-height: 1.65;
@@ -132,7 +132,7 @@ const num = String(index).padStart(2, '0');
 		gap: 0.75rem;
 		margin-top: 1.25rem;
 		padding-top: 1.25rem;
-		border-top: 1px solid var(--color-border);
+		border-top: 1px solid rgba(0, 102, 204, 0.14);
 	}
 
 	.stack {
@@ -147,9 +147,9 @@ const num = String(index).padStart(2, '0');
 	.stack li {
 		font-family: var(--font-mono);
 		font-size: 0.7rem;
-		color: var(--color-text-muted);
-		background: var(--color-surface-alt);
-		border: 1px solid var(--color-border);
+		color: #475569;
+		background: #dceef8;
+		border: 1px solid rgba(0, 102, 204, 0.2);
 		border-radius: 3px;
 		padding: 0.15rem 0.5rem;
 	}
@@ -160,7 +160,7 @@ const num = String(index).padStart(2, '0');
 		gap: 0.3rem;
 		font-family: var(--font-mono);
 		font-size: 0.7rem;
-		color: var(--color-accent);
+		color: #0066CC;
 		text-decoration: none;
 		white-space: nowrap;
 		flex-shrink: 0;

@@ -78,3 +78,37 @@ import { SITE_TITLE } from '../consts';
 		}
 	}
 </style>
+
+<script>
+	let cancelled = false;
+
+	const cancelScroll = () => { cancelled = true; };
+	window.addEventListener('wheel',     cancelScroll, { passive: true });
+	window.addEventListener('touchmove', cancelScroll, { passive: true });
+	window.addEventListener('keydown',   (e) => {
+		if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(e.key)) cancelScroll();
+	});
+
+	document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]').forEach(link => {
+		link.addEventListener('click', e => {
+			const id = link.getAttribute('href')!.slice(1);
+			const target = document.getElementById(id);
+			if (!target) return;
+			e.preventDefault();
+			cancelled = false;
+			const start = window.scrollY;
+			const end = target.getBoundingClientRect().top + window.scrollY;
+			const duration = 2000;
+			let startTime: number | null = null;
+			const ease = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+			const step = (now: number) => {
+				if (cancelled) return;
+				if (!startTime) startTime = now;
+				const elapsed = Math.min((now - startTime) / duration, 1);
+				window.scrollTo({ top: start + (end - start) * ease(elapsed), behavior: 'instant' });
+				if (elapsed < 1) requestAnimationFrame(step);
+			};
+			requestAnimationFrame(step);
+		});
+	});
+</script>

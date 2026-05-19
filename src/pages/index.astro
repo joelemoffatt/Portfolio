@@ -19,28 +19,124 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<main>
 			<Hero />
 			<div class="content-dark">
+				<div class="bubbles" aria-hidden="true"></div>
 				<div class="wave-wrapper">
 					<svg class="section-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 120 900 481" preserveAspectRatio="none" aria-hidden="true">
 						<path d="M0 472L5 421.5C10 371 20 270 30 262.5C40 255 50 341 60 357.5C70 374 80 321 90 309.2C100 297.3 110 326.7 120 344.2C130 361.7 140 367.3 150 331.5C160 295.7 170 218.3 180 177.8C190 137.3 200 133.7 210 140C220 146.3 230 162.7 240 163.7C250 164.7 260 150.3 270 187.3C280 224.3 290 312.7 300 367.8C310 423 320 445 330 421.8C340 398.7 350 330.3 360 302.5C370 274.7 380 287.3 390 296.8C400 306.3 410 312.7 420 335.3C430 358 440 397 450 387.8C460 378.7 470 321.3 480 281.8C490 242.3 500 220.7 510 204.3C520 188 530 177 540 206.3C550 235.7 560 305.3 570 354.2C580 403 590 431 600 428.8C610 426.7 620 394.3 630 346.8C640 299.3 650 236.7 660 237.3C670 238 680 302 690 331.2C700 360.3 710 354.7 720 333.5C730 312.3 740 275.7 750 251.3C760 227 770 215 780 237.7C790 260.3 800 317.7 810 358C820 398.3 830 421.7 840 404.7C850 387.7 860 330.3 870 291.7C880 253 890 233 895 223L900 213L900 601L0 601Z" fill="#0066CC"/>
 					</svg>
 				</div>
-				<Projects />
-				<Skills />
-				<Contact />
+				<div class="sections-above-bubbles">
+					<Projects />
+					<Skills />
+					<Contact />
+				</div>
 			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
 
+<style>
+	.bubbles {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.sections-above-bubbles {
+		position: relative;
+		z-index: 11;
+	}
+
+	:global(.bubbles span) {
+		position: fixed;
+		top: 0;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0);
+		border: 2px solid rgba(255, 255, 255, 0.55);
+		opacity: 0;
+		z-index: 10;
+		will-change: transform, opacity;
+	}
+</style>
+
 <script>
 	const wave = document.querySelector<HTMLElement>('.section-wave');
 	if (wave) {
-		const tick = () => {
-			wave.style.transform = `translateX(${window.scrollY * 1.4}px)`;
-			requestAnimationFrame(tick);
-		};
-		requestAnimationFrame(tick);
+		let waveTicking = false;
+		window.addEventListener('scroll', () => {
+			if (!waveTicking) {
+				requestAnimationFrame(() => {
+					wave.style.transform = `translateX(${window.scrollY * 0.5}px)`;
+					waveTicking = false;
+				});
+				waveTicking = true;
+			}
+		}, { passive: true });
 	}
+
+	const section = document.querySelector<HTMLElement>('.content-dark');
+	const container = document.querySelector<HTMLElement>('.bubbles');
+
+	// — Generate bubbles —
+	const COUNT = 60;
+	const MIN_GAP = 12; // px minimum gap between bubbles
+	const vw = window.innerWidth;
+
+	// Generate sizes first
+	const sizes = Array.from({ length: COUNT }, () =>
+		Math.round(8 + Math.pow(Math.random(), 2) * 40)
+	);
+
+	// Total px needed; scale down if it exceeds viewport
+	const totalNeeded = sizes.reduce((a, b) => a + b, 0) + (COUNT - 1) * MIN_GAP;
+	const scale = totalNeeded > vw ? vw / totalNeeded : 1;
+
+	// Place each bubble sequentially with a random jitter within the leftover slack
+	const slack = Math.max(0, vw - totalNeeded * scale);
+	let cursorPx = 0;
+	sizes.forEach(rawSize => {
+		const size = Math.round(rawSize * scale);
+		const jitter = Math.random() * (slack / COUNT);
+		const leftPct = ((cursorPx + jitter) / vw * 100).toFixed(2);
+		const span = document.createElement('span');
+		span.style.cssText = `left:${leftPct}%;width:${size}px;height:${size}px`;
+		container?.appendChild(span);
+		cursorPx += size + MIN_GAP * scale + jitter;
+	});
+
+	const bubbles = Array.from(document.querySelectorAll<HTMLElement>('.bubbles span'));
+	// Each bubble rises at a slightly different parallax speed
+	const speeds  = bubbles.map(() => 1 + Math.random() * 0.2);
+	// Power curve: most bubbles shallow, rare ones very deep. Raise exponent for more shallow bias.
+	const offsets = bubbles.map(() => Math.pow(Math.random(), 2.5) * 900);
+
+	let bubbleTicking = false;
+	const updateBubbles = () => {
+		if (!section) return;
+		const vh = window.innerHeight;
+		const sectionTop = section.getBoundingClientRect().top;
+		const waveBottom = wave ? wave.getBoundingClientRect().bottom : 300;
+
+		bubbles.forEach((b, i) => {
+			const s = speeds[i] ?? 1.45;
+			const y = vh * (1 - s) + sectionTop * s + (offsets[i] ?? 0);
+			const fadeIn  = Math.min(1, (vh - y) / 100);
+			const fadeOut = Math.min(1, (y - waveBottom) / 120);
+			b.style.transform = `translateY(${y}px)`;
+			b.style.opacity = String(Math.max(0, Math.min(fadeIn, fadeOut)).toFixed(3));
+		});
+	};
+
+	window.addEventListener('scroll', () => {
+		if (!bubbleTicking) {
+			requestAnimationFrame(() => {
+				updateBubbles();
+				bubbleTicking = false;
+			});
+			bubbleTicking = true;
+		}
+	}, { passive: true });
+	updateBubbles();
 </script>
 

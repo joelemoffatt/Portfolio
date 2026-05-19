@@ -12,13 +12,14 @@ import profile from '../data/profile.json';
 
 <style>
 	.hero {
-		min-height: calc(100vh - 3.25rem);
+		min-height: calc(90vh - 3.25rem);
 		padding: 0 1.5rem;
 		position: sticky;
 		top: 3.25rem;
 		z-index: 0;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
+		padding-top: 20vh;
 		background: #d2e5ef;
 	}
 
@@ -43,21 +44,21 @@ import profile from '../data/profile.json';
 	.greeting {
 		display: block;
 		font-family: var(--font-mono);
-		font-size: 0.8125rem;
+		font-size: 1.4rem;
 		color: var(--color-accent);
-		margin-bottom: 1rem;
 		letter-spacing: 0.01em;
 	}
 
 	h1 {
-		margin-bottom: 1.25rem;
-		letter-spacing: -0.02em;
+		font-size: clamp(3.5rem, 9vw, 6rem);
+		letter-spacing: -0.03em;
+		margin-bottom: 0;
 	}
 
 	.bio {
-		max-width: 520px;
+		max-width: 640px;
 		color: var(--color-text-muted);
-		font-size: 1.0625rem;
+		font-size: 1.25rem;
 		margin-bottom: 0;
 		line-height: 1.75;
 	}
