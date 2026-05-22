@@ -7,7 +7,8 @@ import logo from '../assets/logo.svg';
 	<nav class="container">
 		<a href="/" class="brand">
 			<img src={logo.src} alt="" aria-hidden="true" class="logo" width="32" height="32" />
-			{SITE_TITLE}
+			<span class="brand-full">{SITE_TITLE}</span>
+			<span class="brand-short">Portfolio</span>
 		</a>
 		<ul>
 			<li><a href="#projects">Projects</a></li>
@@ -72,9 +73,14 @@ import logo from '../assets/logo.svg';
 
 	ul a:hover { color: #0066CC; background: rgba(0, 102, 204, 0.08); text-decoration: none; }
 
+	.brand-short { display: none; }
+
 	@media (max-width: 480px) {
 		ul { gap: 0; }
 		ul a { padding: 0.35rem 0.5rem; }
+		.brand-full { display: none; }
+		.brand-short { display: inline; }
+		.logo { width: 40px; height: 40px; }
 	}
 </style>
 

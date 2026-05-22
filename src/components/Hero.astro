@@ -12,14 +12,14 @@ import profile from '../data/profile.json';
 
 <style>
 	.hero {
-		min-height: calc(90vh - 3.25rem);
+		min-height: calc(90svh - 3.25rem);
 		padding: 0 1.5rem;
 		position: sticky;
 		top: 3.25rem;
 		z-index: 0;
 		display: flex;
 		align-items: flex-start;
-		padding-top: 20vh;
+		padding-top: 20svh;
 		background: #d2e5ef;
 	}
 
@@ -66,6 +66,8 @@ import profile from '../data/profile.json';
 	@media (max-width: 600px) {
 		.hero {
 			padding: 0 1.25rem 6rem;
+			padding-top: max(4rem, 10svh);
+			align-items: flex-start;
 		}
 	}
 </style>

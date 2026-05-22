@@ -104,10 +104,10 @@ section {
 
 .wave-wrapper {
 	position: absolute;
-	top: -160px;
+	top: calc(-1 * clamp(100px, 13vw, 180px));
 	left: 0;
 	right: 0;
-	height: 160px;
+	height: clamp(100px, 13vw, 180px);
 	overflow: hidden;
 	pointer-events: none;
 }
@@ -118,8 +118,19 @@ section {
 	top: 0;
 	right: 0;
 	width: 4000px;
-	height: 160px;
+	height: clamp(100px, 13vw, 180px);
 	pointer-events: none;
+}
+
+@media (max-width: 600px) {
+	.wave-wrapper {
+		height: calc(60px + 4px);
+		top: calc(-1 * (60px + 4px) + 4px);
+	}
+	.section-wave {
+		height: calc(60px + 4px);
+		right: -300px;
+	}
 }
 
 /* ─── Section Label (shared) ──────────────────────────────── */
