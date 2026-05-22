@@ -4,7 +4,7 @@ description: A full-stack CRM and route management platform for mobile service b
 stack: [Next.js, Payload CMS, MapLibre GL]
 repo: https://github.com/joelemoffatt/omniforce
 live: ""
-date: 2025-03-01
+date: 2026-04-24
 featured: true
 ---
 

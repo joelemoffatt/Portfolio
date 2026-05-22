@@ -12,13 +12,6 @@ import logo from '../assets/logo.svg';
 		<ul>
 			<li><a href="#projects">Projects</a></li>
 			<li><a href="#skills">Skills</a></li>
-			<li>
-				<button class="theme-toggle" aria-label="Toggle header theme" title="Switch header colour">
-					<span class="toggle-track">
-						<span class="toggle-thumb"></span>
-					</span>
-				</button>
-			</li>
 		</ul>
 	</nav>
 </header>
@@ -29,13 +22,6 @@ import logo from '../assets/logo.svg';
 		top: 0;
 		z-index: 100;
 		background: #D2E5EF;
-		border-bottom: 1px solid rgba(0, 102, 204, 0.15);
-		transition: background 0.3s ease, border-color 0.3s ease;
-	}
-
-	header.dark {
-		background: #0E172A;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 	}
 
 	nav {
@@ -55,11 +41,6 @@ import logo from '../assets/logo.svg';
 		color: #0E172A;
 		text-decoration: none;
 		letter-spacing: -0.01em;
-		transition: color 0.3s ease;
-	}
-
-	header.dark .brand {
-		color: #D2E5EF;
 	}
 
 	.logo {
@@ -69,7 +50,6 @@ import logo from '../assets/logo.svg';
 	}
 
 	.brand:hover { text-decoration: none; color: #0066CC; }
-	header.dark .brand:hover { color: #D2E5EF; }
 
 	ul {
 		list-style: none;
@@ -90,49 +70,7 @@ import logo from '../assets/logo.svg';
 		transition: color 0.15s ease, background 0.15s ease;
 	}
 
-	header.dark ul a { color: rgba(210, 229, 239, 0.72); }
-
 	ul a:hover { color: #0066CC; background: rgba(0, 102, 204, 0.08); text-decoration: none; }
-	header.dark ul a:hover { color: #D2E5EF; background: rgba(210, 229, 239, 0.1); }
-
-	/* Toggle */
-	.theme-toggle {
-		background: none;
-		border: none;
-		padding: 0.35rem 0.5rem;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-	}
-
-	.toggle-track {
-		display: block;
-		width: 28px;
-		height: 15px;
-		border-radius: 999px;
-		background: rgba(0, 102, 204, 0.25);
-		position: relative;
-		transition: background 0.3s ease;
-	}
-
-	header.dark .toggle-track { background: rgba(210, 229, 239, 0.3); }
-
-	.toggle-thumb {
-		display: block;
-		width: 11px;
-		height: 11px;
-		border-radius: 50%;
-		background: #0066CC;
-		position: absolute;
-		top: 2px;
-		left: 2px;
-		transition: transform 0.3s ease, background 0.3s ease;
-	}
-
-	header.dark .toggle-thumb {
-		transform: translateX(13px);
-		background: #D2E5EF;
-	}
 
 	@media (max-width: 480px) {
 		ul { gap: 0; }
@@ -141,13 +79,6 @@ import logo from '../assets/logo.svg';
 </style>
 
 <script>
-	const header = document.querySelector<HTMLElement>('header')!;
-	const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle')!;
-
-	toggle.addEventListener('click', () => {
-		header.classList.toggle('dark');
-	});
-
 	let cancelled = false;
 	const cancelScroll = () => { cancelled = true; };
 	window.addEventListener('wheel',     cancelScroll, { passive: true });

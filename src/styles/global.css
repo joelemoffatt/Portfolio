@@ -12,9 +12,7 @@
 	--color-border: #CBD5E1;
 	--color-border-strong: #8FA3BE;
 
-	--font-display: 'Syne', system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono', 'Courier New', monospace;
-	--font-body: 'DM Sans', var(--font-atkinson), system-ui, sans-serif;
+	/* --font-display, --font-mono, --font-body injected by Astro Font components in BaseHead */
 
 	--max-width: 920px;
 	--section-padding: 5.5rem 1.5rem;
@@ -30,7 +28,7 @@
 }
 
 html {
-	scroll-behavior: smooth;
+	scroll-behavior: auto;
 }
 
 /* ─── Base ────────────────────────────────────────────────── */

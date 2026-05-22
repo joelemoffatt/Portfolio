@@ -4,7 +4,7 @@ description: A digital platform connecting field crews, safety managers, and pro
 stack: [Node.js, PostgreSQL, Expo]
 repo: https://github.com/joelemoffatt/crewconnect
 live: https://crewconnect.site/
-date: 2024-11-01
+date: 2025-11-12
 featured: true
 ---
 

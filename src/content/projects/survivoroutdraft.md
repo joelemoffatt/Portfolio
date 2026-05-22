@@ -10,7 +10,7 @@ repo:
   - label: Data Pipeline
     url: https://github.com/joelemoffatt/survivoRDataWrangling
 live: "https://outdraft.joelmoffatt.com/login"
-date: 2024-05-20
+date: 2026-01-22
 featured: true
 ---
 

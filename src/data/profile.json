@@ -1,10 +1,11 @@
 {
   "name": "Joel Moffatt",
   "tagline": "Software Engineer",
-  "bio": "I build clean, performant web applications with a focus on great user experiences and solid engineering. Open to new opportunities.",
+  "bio": "I have experience building full-stack software applications and business automation systmes. I'm a dedicated and collaborative team member, always eager to learn and take on new challenges.",
   "email": "joelemoffatt@gmail.com",
   "socials": [
     { "label": "GitHub", "url": "https://github.com/joelemoffatt" },
     { "label": "LinkedIn", "url": "https://www.linkedin.com/in/joelemoffatt/" }
   ]
 }
+

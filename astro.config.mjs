@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://joelmoffatt.com',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
@@ -30,6 +30,27 @@ export default defineConfig({
 					},
 				],
 			},
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'Syne',
+			cssVariable: '--font-display',
+			weights: [400, 600, 700, 800],
+			display: 'block',
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'JetBrains Mono',
+			cssVariable: '--font-mono',
+			weights: [400, 500],
+			display: 'block',
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'DM Sans',
+			cssVariable: '--font-body',
+			weights: [400, 500, 600],
+			display: 'block',
 		},
 	],
 });
