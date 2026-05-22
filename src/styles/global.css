@@ -112,7 +112,7 @@ section {
 	height: calc(clamp(100px, 13vw, 180px) + 200px);
 	overflow: hidden;
 	pointer-events: none;
-	background: #D2E5EF;
+	background: transparent;
 }
 
 .section-wave {
