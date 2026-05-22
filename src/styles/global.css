@@ -104,18 +104,23 @@ section {
 
 .wave-wrapper {
 	position: absolute;
-	top: calc(-1 * clamp(100px, 13vw, 180px));
+	/* Extra 200px buffer above the wave shape — covers any vertical shift
+	   caused by mobile browser chrome hiding/showing (~100px max) */
+	top: calc(-1 * clamp(100px, 13vw, 180px) - 200px);
 	left: 0;
 	right: 0;
-	height: clamp(100px, 13vw, 180px);
+	height: calc(clamp(100px, 13vw, 180px) + 200px);
 	overflow: hidden;
 	pointer-events: none;
+	background: #D2E5EF;
 }
 
 .section-wave {
 	display: block;
 	position: absolute;
-	top: 0;
+	/* bottom:0 keeps the SVG pinned to the wave/dark-section boundary
+	   regardless of how tall the wrapper is */
+	bottom: 0;
 	right: 0;
 	width: 4000px;
 	height: clamp(100px, 13vw, 180px);
@@ -124,8 +129,8 @@ section {
 
 @media (max-width: 600px) {
 	.wave-wrapper {
-		height: calc(60px + 4px);
-		top: calc(-1 * (60px + 4px) + 4px);
+		height: calc(60px + 4px + 200px);
+		top: calc(-1 * (60px + 4px) + 4px - 200px);
 	}
 	.section-wave {
 		height: calc(60px + 4px);
