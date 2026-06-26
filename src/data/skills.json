@@ -1,14 +1,20 @@
 [
   {
-    "group": "Languages",
-    "items": ["Python", "Java", "JavaScript", "SQL"]
+    "group": "Product",
+    "items": [
+      "Discovery & Research",
+      "Feature Scoping",
+      "Sprint Planning",
+      "Requirements Documentation",
+      "Cross-functional Communication"
+    ]
   },
   {
-    "group": "Frameworks & Libraries",
-    "items": ["Springboot", "Next.js", "Expo", "Node.js"]
+    "group": "Office",
+    "items": ["Copilot", "Excel", "PowerPoint", "Word"]
   },
   {
-    "group": "Tools & Platforms",
-    "items": ["Docker", "PostgreSQL", "Git", "AWS"]
+    "group": "Technical",
+    "items": ["Python", "JavaScript", "SQL", "AWS", "REST APIs", "Git", "Claude"]
   }
 ]
