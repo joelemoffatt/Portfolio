@@ -1,6 +1,6 @@
 ---
 title: SurvivorOutDraft
-description: A fantasy league app for the TV show Survivor — draft castaways with friends, earn points from real game events, and track scores live as episodes air.
+description: Fantasy league app for the TV show Survivor, where friends draft castaways and earn points. Uses a data wrangling pipeline to extract and transform episode data into the application’s expected schema.
 stack: [Spring Boot, Expo, Python]
 repo:
   - label: Backend

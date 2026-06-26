@@ -1,6 +1,6 @@
 ---
 title: CrewConnect
-description: A digital platform connecting field crews, safety managers, and project engineers — replacing paper-based construction workflows with real-time mobile and web tools.
+description: Construction management platform that connects field crews, safety managers and office admins. Created to replace paper based processes with real time mobile and web tools.
 stack: [Node.js, PostgreSQL, Expo]
 repo: https://github.com/joelemoffatt/crewconnect
 live: https://crewconnect.site/
